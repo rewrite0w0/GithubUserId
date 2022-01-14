@@ -14,3 +14,12 @@ body {
 .githubID {
   font-size: 4rem;
 }
+
+@media screen and (min-width: 300px) and (max-width: 800px) {
+  body {
+    font-size: 120%;
+  }
+  .githubID {
+    font-size: 120%;
+  }
+}
