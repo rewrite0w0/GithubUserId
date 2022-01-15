@@ -1,8 +1,7 @@
 function getGithubID() {
   function hereYourGithubID(num) {
     const view = document.querySelector('.yourGithubID');
-
-    // Number.isNaN(Number(num)) ? (view.innerText = 1) : (view.innerText = num);
+    view.innerText = num;
   }
 
   function wrongID() {
