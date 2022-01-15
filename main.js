@@ -1,7 +1,13 @@
 function getGithubID() {
   function hereYourGithubID(num) {
     const view = document.querySelector('.yourGithubID');
-    view.innerText = num;
+
+    // Number.isNaN(Number(num)) ? (view.innerText = 1) : (view.innerText = num);
+  }
+
+  function wrongID() {
+    const view = document.querySelector('.yourGithubID');
+    view.innerText = 'Wrong ID :<';
   }
 
   function requestGitHub(str) {
@@ -11,7 +17,7 @@ function getGithubID() {
 
     xhr.onload = function () {
       const data = JSON.parse(xhr.response);
-      xhr.status !== 200 ? console.warn('wrong id') : hereYourGithubID(data.id);
+      xhr.status !== 200 ? wrongID() : hereYourGithubID(data.id);
     };
     xhr.send();
   }
