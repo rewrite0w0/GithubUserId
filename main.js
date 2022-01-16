@@ -27,15 +27,20 @@ function getGithubID() {
   input.addEventListener('keydown', (e) => {
     e.defaultPrevented;
     const checkPressEnter = e.code === 'Enter';
-    const checkSpace = input.value.trim().replace(/\s/gi, '');
+    const checkSpace = input.value.trim().replace(/[^\w\s]/gi, '').length > 0;
+    const removeSpace = input.value.trim().replace(/[^\w\s]/gi, '');
 
-    if (checkPressEnter) {
-      requestGitHub(checkSpace);
+    function blockTeasing() {
       input.value = '';
       input.focus();
-    } else {
-      input.focus();
+      alert('....?');
     }
+
+    !checkPressEnter
+      ? 0
+      : !checkSpace
+      ? blockTeasing()
+      : requestGitHub(removeSpace);
   });
 }
 
